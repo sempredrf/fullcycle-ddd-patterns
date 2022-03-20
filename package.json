@@ -1,4 +1,23 @@
 {
+  "name": "app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run tsc -- --noEmit && jest",
+    "tsc": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sempredrf/fullcycle-ddd-patterns.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sempredrf/fullcycle-ddd-patterns/issues"
+  },
+  "homepage": "https://github.com/sempredrf/fullcycle-ddd-patterns#readme",
+
   "devDependencies": {
     "@swc/cli": "^0.1.55",
     "@swc/core": "^1.2.148",
@@ -9,16 +28,13 @@
     "tslint": "^6.1.3",
     "typescript": "^4.5.5"
   },
-  "scripts": {
-    "test": "npm run tsc -- --noEmit && jest",
-    "tsc": "tsc"
-  },
   "dependencies": {
     "@types/uuid": "^8.3.4",
     "reflect-metadata": "^0.1.13",
     "sequelize": "^6.17.0",
-    "sequelize-typescript": "^2.1.3",
-    "sqlite3": "^5.0.2",
-    "uuid": "^8.3.2"
+    "sequelize-typescript": "^2.1.3",    
+    "uuid": "^8.3.2",
+    "sqlite3": "^5.0.2"
   }
+
 }
