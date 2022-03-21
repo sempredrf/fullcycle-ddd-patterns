@@ -77,7 +77,7 @@ export default class OrderRepository implements OrderRepositoryInterface {
           id,
         },
         rejectOnEmpty: true,
-        include: [{ model: OrderItemModel, as: 'items' }, { model: ProductModel, as: 'product'}],
+        include: [{ model: OrderItemModel, as: 'items' }],
         
       });
     } catch (error) {
@@ -89,7 +89,7 @@ export default class OrderRepository implements OrderRepositoryInterface {
       orderModel.customer_id, 
       orderModel.items.map((item) => new OrderItem(
         item.id, 
-        item.product.name, 
+        item.name, 
         item.price, 
         item.product_id, 
         item.quantity
@@ -100,9 +100,9 @@ export default class OrderRepository implements OrderRepositoryInterface {
   async findAll(): Promise<Order[]> {
     const orderModel = await OrderModel.findAll(      
       {
-        include: [{ model: OrderItemModel, as: 'items', include: [{ model: ProductModel, as: 'product'}] }],
+        include: [{ model: OrderItemModel, as: 'items' }],
       }
-    );
+    );      
 
     return orderModel.map((order) => {
       return new Order(
@@ -110,12 +110,13 @@ export default class OrderRepository implements OrderRepositoryInterface {
         order.customer_id,
         order.items.map((item) => new OrderItem(
           item.id, 
-          item.product.name, 
-          item.product.price, 
+          item.name, 
+          item.price, 
           item.product_id, 
           item.quantity
         ))
       );
     });
+  
   }
 }
